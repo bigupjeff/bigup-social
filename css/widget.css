@@ -1,0 +1,29 @@
+.social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 2em;
+}
+    .social-inline {
+        justify-content: center;
+        width: 100%;
+        min-height: 15vmin;
+    }
+    @media (min-width: 48em) {
+        .social-inline { min-height: 2.6em;
+    }}
+    .social_link {
+        --bigup_green: #63CFA7;
+        display: flex;
+        justify-content: space-around;
+        transition: 0.25s;
+        border-radius: 3em;
+        padding: 0.25em;
+        height: 100%;
+    }
+    .social_link:hover {
+        background: var(--bigup_green);
+    }
+    .social_icon {
+        height: 100%;
+    }
