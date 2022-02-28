@@ -34,9 +34,9 @@ class Bigup_Social_Widget extends WP_Widget {
     function form( $instance ) {
 
         $title = ! empty( $instance['title'] ) ? $instance['title'] : 'Connect with Me';
-        $codepen = $instance['codepen'];
-        $instagram = $instance['instagram'];
-        $facebook = $instance['facebook'];
+        $codepen = ! empty( $instance['codepen'] ) ? $instance['codepen'] : '';
+        $instagram = ! empty( $instance['codepen'] ) ? $instance['codepen'] : '';
+        $facebook = ! empty( $instance['codepen'] ) ? $instance['codepen'] : '';
 
         ?>
 
@@ -83,9 +83,23 @@ class Bigup_Social_Widget extends WP_Widget {
         $facebook_iconurl = plugin_dir_url( dirname( __FILE__ ) ) . 'imagery/icon_facebook-transparent.svg';
 
         //Check there is at least one social link to display otherwise exit
+
         if ( empty( $codepen ) && empty( $instagram ) && empty( $facebook ) ) {
-            echo '<p>Bigup Web: Social: No social links found. Please check at least one has been configured in widget settings!</p>';
+
+            $noconfig = $args['before_widget'];
+
+            if ( ! empty( $title ) ) {
+                $noconfig .= $args['before_title'] . $title . $args['after_title'];
+            };
+
+            $noconfig .= '<div class="social social-inline">';
+            $noconfig .= '<span>Error: No social links configured. Please configure widget settings.</span>';
+            $noconfig .= '</div>';
+            $noconfig .= $args['after_widget'];
+
+            echo $noconfig;
             return;
+
         } else {
 
             echo $args['before_widget'];
@@ -96,31 +110,31 @@ class Bigup_Social_Widget extends WP_Widget {
 
                 <div class="social social-inline">
 
-                <?php
-                //Check if setting is populated and output html if true
-                if ( ! empty( $codepen ) ) {
-                    ?>
-                        <a  class="social_link" href="<?php echo $codepen; ?>" target="_blank" aria-label="Follow Me on Codepen">
-                            <img height="100%" class="social_icon" src="<?php echo $codepen_iconurl; ?>" alt="Codepen Logo" title="Follow Me on Codepen">
-                        </a>
                     <?php
-                };
+                    //Check if setting is populated and output html if true
+                    if ( ! empty( $codepen ) ) {
+                        ?>
+                            <a  class="social_link" href="<?php echo $codepen; ?>" target="_blank" aria-label="Follow Me on Codepen">
+                                <img height="100%" class="social_icon" src="<?php echo $codepen_iconurl; ?>" alt="Codepen Logo" title="Follow Me on Codepen">
+                            </a>
+                        <?php
+                    };
 
-                if ( ! empty( $instagram ) ) {
-                    ?>
-                        <a class="social_link" href="<?php echo $instagram; ?>" target="_blank" aria-label="Follow Me on Instagram">
-                            <img height="100%" class="social_icon" src="<?php echo $instagram_iconurl; ?>" alt="Instagram Logo" title="Follow Me on Instagram">
-                        </a>
-                    <?php
-                };
+                    if ( ! empty( $instagram ) ) {
+                        ?>
+                            <a class="social_link" href="<?php echo $instagram; ?>" target="_blank" aria-label="Follow Me on Instagram">
+                                <img height="100%" class="social_icon" src="<?php echo $instagram_iconurl; ?>" alt="Instagram Logo" title="Follow Me on Instagram">
+                            </a>
+                        <?php
+                    };
 
-                if ( ! empty( $facebook ) ) {
-                    ?>
-                        <a class="social_link" href="<?php echo $facebook; ?>" target="_blank" aria-label="Follow Me on Facebook">
-                            <img height="100%" class="social_icon" src="<?php echo $facebook_iconurl; ?>" alt="Facebook Logo" title="Follow Me on Facebook">
-                        </a>
-                    <?php
-                };
+                    if ( ! empty( $facebook ) ) {
+                        ?>
+                            <a class="social_link" href="<?php echo $facebook; ?>" target="_blank" aria-label="Follow Me on Facebook">
+                                <img height="100%" class="social_icon" src="<?php echo $facebook_iconurl; ?>" alt="Facebook Logo" title="Follow Me on Facebook">
+                            </a>
+                        <?php
+                    };
 
                 echo '</div>';
 
