@@ -24,7 +24,7 @@ class Bigup_Social_Widget extends WP_Widget {
             'description' => 'A simple social link widget'
         );
         parent::__construct( 'bigup_social_widget', 'Bigup Web: Social', $widget_options );
-
+		/* 2nd param is widget name as it appears in widget picker */
     }
 
 
