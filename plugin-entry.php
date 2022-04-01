@@ -1,18 +1,18 @@
 <?php
 /**
  * Plugin Name: Bigup Web: Social
- * Plugin URI: https://jeffersonreal.com
+ * Plugin URI: https://jeffersonreal.uk
  * Description: A simple social media widget.
  * Version: 0.13
  * Author: Jefferson Real
- * Author URI: https://jeffersonreal.com
+ * Author URI: https://jeffersonreal.uk
  * License: GPL2
  *
  * @package bigup_social
- * @author Jefferson Real <me@jeffersonreal.com>
+ * @author Jefferson Real <me@jeffersonreal.uk>
  * @copyright Copyright (c) 2021, Jefferson Real
  * @license GPL2+
- * @link https://jeffersonreal.com
+ * @link https://jeffersonreal.uk
  */
 
 
